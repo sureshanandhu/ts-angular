@@ -1,2 +1,2 @@
-# ts-angular
-Angular 6 , Typescript & Webpack. Working example of Login, User registration, layout with header & footer, user CRUD forms using the public api https://reqres.in/
+# ts-angular 
+A simple angular 6 app with Typescript & Webpack. REST API's from https://reqres.in/ has been used for Login, Registration & User list.
