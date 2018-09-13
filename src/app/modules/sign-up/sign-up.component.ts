@@ -41,12 +41,12 @@ export class SignUpComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.create(this.signUpForm.value)
+    this.userService.register(this.signUpForm.value)
       .pipe(first())
       .subscribe(
       data => {
-         //this.alertService.success('Email Registered successfully', true);
-        this.router.navigate(['/login']);
+        this.alertService.success('Email Registered successfully', true);
+        //this.router.navigate(['/login']);
       },
       error => {
         this.alertService.error(error.error);

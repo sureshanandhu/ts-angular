@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    // get form fields
+    // get form values
     const credentials = this.loginForm.value;
     this.loading = true;
 

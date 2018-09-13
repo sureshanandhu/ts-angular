@@ -16,10 +16,16 @@ export class UserService {
   * 
   * @param user
   */
-  create(user: User) {
-    /*register api not working. so used users api*/
-    //return this.apiService.post('register', { email: user.email, password: user.password });
-    return this.apiService.post('users', { name: user.email, job: user.password });
+  register(user: User) {
+    return this.apiService.post('register', { email: user.email, password: user.password });    
   }
+
+ /**
+  * 
+  * @param user
+  */
+    create(user: User) {
+      return this.apiService.post('users', { name: user.email, job: user.password });
+    }
   
 }
