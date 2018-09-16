@@ -13,8 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
+ // loading = false;
+  //submitted = false;
   returnUrl: string;
 
   constructor(
@@ -37,12 +37,9 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';   
   }
-  // convenience getter for easy access to form fields
-  get formControls() { return this.loginForm.controls; }
-
-  
+   
   onSubmit() {
-    this.submitted = true;
+    //this.submitted = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
@@ -51,7 +48,7 @@ export class LoginComponent implements OnInit {
 
     // get form values
     const credentials = this.loginForm.value;
-    this.loading = true;
+   // this.loading = true;
 
     this.authenticationService.login(credentials)
       .pipe(first())
@@ -61,7 +58,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.alertService.error(error.error);
-        this.loading = false;
+       // this.loading = false;
       });
   }
 

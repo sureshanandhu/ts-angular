@@ -1,0 +1,13 @@
+.banner {
+  /* width: 100%;*/
+  background-color: #283e4a;
+  height: 7.5%;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.navitem_title {
+  color: #c7d1d8;
+}
