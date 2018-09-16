@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  private userEmail: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.userEmail = localStorage.getItem('loginEmail');
   }
 
 }

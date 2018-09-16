@@ -4,39 +4,33 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../core/services/api.service'
 import { User } from '../models/user.model'
-import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
-    private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(
     private http: HttpClient,
     private router: Router,
     private apiService: ApiService
   ) { }
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
-
   login(user: User) {
     return this.apiService.post('login', { email: user.email, password: user.password })
-      .pipe(map(user => {
+      .pipe(map(res => {
         // login successful if there's a token in the response              
-        if (user && user.token) {
-          //set api user token to local storage
-          localStorage.setItem('apiUserToken', user.token);
-          this.loggedIn.next(true);
+        if (res && res.token) {
+          //set api user token & user email to local storage
+          localStorage.setItem('apiUserToken', res.token);
+          localStorage.setItem('loginEmail', user.email);
         }
         return user;
       }));
   }
 
   logout() {
-    this.loggedIn.next(false);
     // remove api user token from local storage
     localStorage.removeItem('apiUserToken');
+    localStorage.removeItem('loginEmail');
     this.router.navigate(['/login']);
   }
 }

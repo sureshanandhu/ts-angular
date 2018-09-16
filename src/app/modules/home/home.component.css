@@ -1,0 +1,23 @@
+.main-body {
+  width: 100%;
+  background-color: #f6f6f6;
+  height: 89%;
+}
+
+.left-container {
+  width: 20%;
+  height: 60%;
+  vertical-align: top;
+  margin: 20px 0px 0px 20px;
+  border: 1px solid #d5d2d2;
+  float: left
+}
+
+.main-container {
+  width: 75%;
+  height: 95%;
+  vertical-align: top;
+  float: left;
+  margin: 20px 0px 0px 20px;
+  /*border: 1px solid #d5d2d2;*/
+}
