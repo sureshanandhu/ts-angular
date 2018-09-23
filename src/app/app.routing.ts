@@ -1,17 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignUpComponent } from './modules/sign-up/sign-up.component';
-
 import { AuthenticationService } from './core/authentication/authentication.service';
 import { AuthenticationGuard } from './core/guards/authentication-guard';
-import { LoginComponent } from './modules/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './shared/layout/login-layout';
-import { HomeComponent } from './modules/home/home.component';
+import { HomeComponent } from './home/home.component';
 import { HomeLayoutComponent } from './shared/layout/home-layout';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { PageNotFoundComponent } from 'src/app/page-not-found/page-not-found.component';
+import { ResourceComponent } from 'src/app/resource/resource.component';
 
 const routes: Routes = [
-  {
+  {//redirect to home when authentication guard returns true
     path: '',
+    redirectTo: '/home', pathMatch:'full',
+    canActivate: [AuthenticationGuard],
+  },
+  {//redirect to login
+    path: '',
+    redirectTo: '/login', pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent
+  },
+  {
+    path: 'home',
     component: HomeLayoutComponent,
     canActivate: [AuthenticationGuard],
     children: [
@@ -22,18 +40,18 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
-    component: LoginLayoutComponent,
+    path: 'resource',
+    component: HomeLayoutComponent,
+    canActivate: [AuthenticationGuard],
     children: [
       {
-        path: 'login',
-        component: LoginComponent
+        path: '',
+        component: ResourceComponent
       }
     ]
-  },
-  { path: 'signup', component: SignUpComponent },
-  
-  { path: '**', redirectTo: '' }
+  }, 
+  //wildcard route
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 
