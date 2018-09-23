@@ -1,0 +1,24 @@
+<div class="main-body">
+  <div style=" width:98.5%;">
+    <div class="row" style="border:1px solid #f2f2f2;" *ngFor="let resource of resources">
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <label>ID : </label> {{resource.id}}
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <label>Name : </label> {{resource.name}}
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <label>Year : </label> {{resource.year}}
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <label>Color : </label> {{resource.color}}
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <label>Value : </label> {{resource.pantone_value}}
+      </div>
+      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <span class="fa fa-edit"></span>
+      </div>
+    </div>
+  </div>
+</div>

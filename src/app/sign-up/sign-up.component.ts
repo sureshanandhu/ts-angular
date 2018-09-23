@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService } from '../../core/services/alert.service';
-import { UserService } from '../../core/services/user.service';
+import { AlertService } from '../core/services/alert.service';
+import { UserService } from '../core/services/user.service';
 
 @Component({
   selector: 'app-sign-up',

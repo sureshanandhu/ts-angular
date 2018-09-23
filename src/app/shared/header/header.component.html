@@ -1,32 +1,15 @@
 <div class="banner">
   <nav class="navbar navbar-light">
     <div class="container text-white">
-      <span class="font-weight-normal ">Angular TS Demo</span>
+      <span class="font-weight-normal ">{{title}}</span>
       <ul class="nav navbar-nav pull-xs-right">
-        <li class="nav-item pr-3">
-          <a class=" nav-link"
-             routerLink="/">
-            <span class="fa fa-home text-center navitem_title "> Home</span>
+        <li class="nav-item pr-3" *ngFor="let route of routes">
+          <a class=" nav-link" [routerLink]="route.url">
+            <span class="fa text-center navitem_title "> {{route.linkName}}</span>
           </a>
         </li>
-        <li class="nav-item pr-3">
-          <a class=" nav-link"
-             routerLink="/login"
-             routerLinkActive="active">
-            <span class="fa fa-user text-center navitem_title"> Users</span>
-          </a>
-        </li>
-        <li class="nav-item pr-5">
-          <a class="nav-link"
-             routerLink="/register"
-             routerLinkActive="active">
-            <span class="fa fa-address-book text-center navitem_title"> Register</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"
-             routerLink="/login"
-             routerLinkActive="active">
+        <li class="nav-item pl-2">
+          <a class="nav-link" routerLink="/login">
             <span class="fa  fa-arrow-circle-down text-center navitem_title"> Sign Out</span>
           </a>
         </li>

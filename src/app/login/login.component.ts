@@ -1,8 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../core/authentication/authentication.service';
-import { AlertService } from '../../core/services/alert.service';
+import { AuthenticationService } from '../core/authentication/authentication.service';
+import { AlertService } from '../core/services/alert.service';
 import { first } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -13,8 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
- // loading = false;
-  //submitted = false;
+  loading = false;
+  submitted = false;
   returnUrl: string;
 
   constructor(
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -35,20 +35,24 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';   
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-   
+
+  // convenience getter for easy access to form fields
+  get formControls() { return this.loginForm.controls; }
+
   onSubmit() {
-    //this.submitted = true;
+    this.submitted = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
 
+    
     // get form values
     const credentials = this.loginForm.value;
-   // this.loading = true;
+    this.loading = true;
 
     this.authenticationService.login(credentials)
       .pipe(first())
@@ -58,7 +62,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.alertService.error(error.error);
-       // this.loading = false;
+        this.loading = false;
       });
   }
 
