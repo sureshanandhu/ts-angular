@@ -1,7 +1,5 @@
 # ts-angular 
-A simple angular 6 app with Typescript & Webpack. Public REST API's from https://reqres.in/ has been used for Login, Registration & User list.
-
-To run in local, install ng modules using the command npm install
+A simple angular 6 app with Typescript & Webpack. Ready to use demo application.
 
 Live Demo
-https://tsangular-user-registration-login.netlify.com
+https://tsangular-user-login-registration.netlify.com
